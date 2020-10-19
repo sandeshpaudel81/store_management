@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="content">
+  <h3>Add new bill</h3>
+  <form action="{% url 'store:add-new-bill' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <input type="text" name="customer_name" placeholder="Customer Name">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="submit" value="Add" class="btn btn-success">
+        </div>
+    </div>
+  </form>
+  <hr>
+  <a class="btn btn-primary" href="{% url 'existing-bills' %}">See existing bills</a>
+
+  
+  
+</div>
+        
+
+{% endblock %}

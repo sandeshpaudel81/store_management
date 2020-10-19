@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="content form-wrapper">
+    <div class="card">
+        <div class="card-header">
+            <table class="table">
+                <tr>
+                    <th><h5>Total: <strong>Rs.</strong></h5></th>
+                    <th>
+                        <a style="float:right; margin:5px;" href="/print-bill/{{billId}}" class="btn btn-success" target="_blank">Invoice</a>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Items</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for item in items%}
+                    
+                  <tr>
+                    <th scope="row">{{item.productInfo.name}}</th>
+                    <td>{{item.productInfo.price}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.total}}</td>
+                  </tr>
+                 
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>     
+    
+    
+</div>
+        
+
+{% endblock %}

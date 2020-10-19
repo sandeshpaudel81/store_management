@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{message.tags}}{% endif %} alert-dismissible fade show col-md-4 col-md-offset-4 fixed-bottom" id="alert-box" align="center" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <div class="main-container">
+        <div class="header">
+            <h2>Log in to your account</h2>
+        </div>
+        <div class="content-container">
+            <div class="content">
+                <form action="{% url 'accounts:login' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {% if request.GET.next %}
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+                    {% endif %}
+                    <input type="submit" value ="Login" class="btn btn-primary">
+                </form>
+                <hr>
+                <h5>Need an account?<a href="{% url 'accounts:logout' %}"><button style="margin-left: 30px;" class='btn btn-primary'><span>Signup</span> </button></a>
+                </h5>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright &#169; Sandesh Paudel 2020</p>
+        </div>
+    </div>
+    
+</body>
+</html>

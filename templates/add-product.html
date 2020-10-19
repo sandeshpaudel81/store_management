@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content form-wrapper">
+    <form action="/add-product/" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputProductNo">Product ID</label>
+            <input type="text" class="form-control form-control-sm" name="product_id" placeholder="Product ID" value="{{ y }}" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="inputName">Product Name</label>
+            <input type="text" class="form-control form-control-sm" name="product_name" placeholder="eg. Lays, Kitkat" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputQuantity">Quantity</label>
+            <input type="number" class="form-control form-control-sm" name="product_quantity" required>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputCP">Cost Price</label>
+            <input type="number" name="product_cp" class="form-control form-control-sm" step="0.01" required>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputSP">Selling Price</label>
+            <input type="number" name="product_sp" class="form-control form-control-sm" step="0.01" required>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="inputCompany">Manufacturing Company</label>
+            <input type="text" class="form-control form-control-sm" name="product_company">
+        </div>
+        <div class="form-group">
+            <label for="inputDescription">Product Description</label>
+            <textarea name="product_description" class="form-control form-control-sm"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">ADD</button>
+    </form>
+</div>
+{% endblock %}

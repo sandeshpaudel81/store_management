@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="content form-wrapper">
+        <h2>Products in Stock</h2>
+        <table class="table"> 
+            <thead class="thead-dark"> 
+                <tr> 
+                    <th scope="col">ID</th> 
+                    <th scope="col">Name</th> 
+                    <th scope="col">Quantity</th> 
+                    <th scope="col">Price</th> 
+                </tr> 
+            </thead> 
+            <tbody> 
+                {% for product in products %} 
+                <tr> 
+                    <th scope="row">{{product.id}}</th> 
+                    <td>{{product.product_name}}</td> 
+                    <td>{{product.product_quantity}}</td> 
+                    <td>{{product.product_sp|floatformat:2}}</td> 
+                </tr> 
+                {% endfor %} 
+            </tbody> 
+        </table>
+        
+    </div>
+{% endblock %}
+
+

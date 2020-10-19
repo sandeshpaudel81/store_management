@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content form-wrapper">
+    <form action="/search-product" method="GET">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <input type="search" name="prod_id" id="prod_id" class="form-control form-control-sm" placeholder="Enter the product ID">
+            </div>
+            <div class="form-group col-md-4">
+                <input type="submit" value="Search" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
+    <form action="/update-product/" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputProductNo">Product ID</label>
+                <input type="text" class="form-control form-control-sm" name="product_id" placeholder="Product ID" value="{{ product.id }}" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputName">Product Name</label>
+            <input type="text" class="form-control form-control-sm" name="product_name" value="{{ product.product_name }}" placeholder="eg. Lays, Kitkat">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputQuantity">Quantity</label>
+            <input type="number" class="form-control form-control-sm" value="{{ product.product_quantity }}" name="product_quantity">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputCP">Cost Price</label>
+            <input type="number" name="product_cp" value="{{ product.product_cp }}" class="form-control form-control-sm" step="0.01">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputSP">Selling Price</label>
+            <input type="number" name="product_sp" value="{{ product.product_sp }}" class="form-control form-control-sm" step="0.01">
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="inputCompany">Manufacturing Company</label>
+            <input type="text" class="form-control form-control-sm" value="{{ product.product_company }}" name="product_company">
+        </div>
+        <div class="form-group">
+            <label for="inputDescription">Product Description</label>
+            <textarea name="product_description" class="form-control form-control-sm">{{ product.product_description }}</textarea>
+        </div>
+        <button type="submit" onclick="return confirm('Are you sure you want to update this item?')" class="btn btn-primary">UPDATE</button>
+    </form>
+    
+    {% if product %}
+    <form action="/delete/{{product.id}}" method="post">
+        {% csrf_token %}
+        <button type="submit" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-primary delete" style="background-color: #ff0000; margin-top: 10px;">DELETE</button>
+    </form>
+    {% endif %}
+    
+</div>
+{% endblock %}

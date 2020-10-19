@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="content form-wrapper">
+  <form action="{% url 'store:get-product' %}" method="GET">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <input type="search" name="prod_id" id="prod_id" class="form-control form-control-sm" placeholder="Enter the product ID">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="submit" value="Search" class="btn btn-primary">
+        </div>
+    </div>
+  </form>
+
+  
+  {% if product %}
+  
+  <div class="card">
+    <div class="card-header">
+      <h3>{{ product.product_name }}</h3>
+      <form action="{% url 'store:add-product-to-bill' %}" method="post">
+        {% csrf_token %}
+        <select name="bill" class="form-control">
+            {% for bill in bills %}
+            <option value="{{ bill.id }}">{{bill.date_created}} | {{bill.customer_name}}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="product_id" value="{{ product.id }}" hidden>
+        <input type="number" name="quantity" placeholder="quantity" class="form-control">
+        <button type="submit" class="btn btn-success">Add to Cart</button>
+      </form>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Rs. {{ product.product_sp|floatformat:2 }}</h4>
+      <h5 class="card-title">{{ product.product_company }}</h5>
+      <p class="card-text">{{ product.product_description }}</p>
+      
+    </div>
+  </div>
+  {% endif %}
+</div>
+        
+
+{% endblock %}

@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,400;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+body {
+    background-image: linear-gradient(#29222285,#29222285), url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    width: 1300px;
+}
+
+.main-container {
+    background: #fdfdfdbf;
+    width: 850px;
+    padding: 30px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    margin-top: 15px;
+}
+.header h1{
+    text-transform: uppercase;
+}
+nav {
+    background-color: #3867d6;
+}
+nav ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    
+}
+nav ul li {
+    text-align: center;
+    padding: 20px;
+}
+nav ul li:hover {
+    background-color: #2d98da;
+}
+nav ul li a {
+    color: antiquewhite;
+}
+nav ul li a:hover {
+    
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+
+.form-wrapper {
+    padding: 10px;
+    width: auto;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.content {
+    margin: 30px;
+}
+
+.copyright {
+    background-attachment: fixed;
+    position: absolute;
+    bottom: 0;
+    align-items: right;
+    justify-content: right;
+}
+
+.card-header form,
+.calculate_bill {
+   float: right;
+}
+
