@@ -4,7 +4,7 @@
 
 <div class="content">
   <h3>Add new bill</h3>
-  <form action="{% url 'store:add-new-bill' %}" method="POST">
+  <form action="/add-new-bill/" method="POST">
     {% csrf_token %}
     <div class="form-row">
         <div class="form-group col-md-4">
@@ -16,7 +16,7 @@
     </div>
   </form>
   <hr>
-  <a class="btn btn-primary" href="{% url 'existing-bills' %}">See existing bills</a>
+  <a class="btn btn-primary" href="/existing-bills">See existing bills</a>
 
   
   

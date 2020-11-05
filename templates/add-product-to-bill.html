@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="content form-wrapper">
-  <form action="{% url 'store:get-product' %}" method="GET">
+  <form action="/get-product/" method="GET">
     {% csrf_token %}
     <div class="form-row">
         <div class="form-group col-md-4">
@@ -21,7 +21,7 @@
   <div class="card">
     <div class="card-header">
       <h3>{{ product.product_name }}</h3>
-      <form action="{% url 'store:add-product-to-bill' %}" method="post">
+      <form action="/add-product-to-bill/" method="post">
         {% csrf_token %}
         <select name="bill" class="form-control">
             {% for bill in bills %}

@@ -24,14 +24,14 @@
         </div>
         <div class="content-container">
             <div class="content">
-                <form action="{% url 'accounts:signup' %}" method="POST">
+                <form action="/account/signup/" method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
                     
                     <input type="submit" value ="Signup" class="btn btn-success">
                 </form>
                 <hr>
-                <h5>Have account?<a href="{% url 'accounts:login' %}"><button style="margin-left: 30px;" class='btn btn-primary'><span>Login</span> </button></a>
+                <h5>Have account?<a href="/account/login"><button style="margin-left: 30px;" class='btn btn-primary'><span>Login</span> </button></a>
                 </h5>
             </div>
         </div>

@@ -91,11 +91,14 @@ def add_product_to_bill(request):
 
         # to decrease the quantity in stock
         p = Product.objects.get(id=prodID)
-        p.product_quantity = int(p.product_quantity) - int(quantity)
-        p.save()
+        if (int(p.product_quantity) < int(quantity)):
+            messages.error(request, "No sufficient products in the stock!")
+        else:
+            p.product_quantity = int(p.product_quantity) - int(quantity)
+            p.save()
 
-        BillItems.objects.create(bill_id= billID, product_id=prodID, quantity=quantity)
-        return redirect('/add-product-to-bill')
+            BillItems.objects.create(bill_id= billID, product_id=prodID, quantity=quantity)
+            return redirect('/add-product-to-bill')
     return render(request, 'add-product-to-bill.html')
 
 
@@ -113,7 +116,10 @@ def get_product(request):
 @login_required(login_url="/account/login")
 def final_bill(request, id):
     billItems = BillItems.objects.filter(bill=Bill.objects.get(id=id))
-    context = {'items': billItems, 'billId': id}
+    grandTotal = 0
+    for i in billItems:
+        grandTotal += int(i.quantity)*float(i.product.product_sp)
+    context = {'items': billItems, 'billId': id, 'g_total':grandTotal}
     return render(request, 'final-bill.html', context)
 
 
