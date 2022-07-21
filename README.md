@@ -11,7 +11,7 @@ This is the web application based on **Django** framework to facilitate the depa
 2. Clone the repo from github and CD into project.
 
 ```shell
-git clone https://github.com/Raktim9595/Q.git && cd store_management
+git clone https://github.com/sandeshpaudel81/store_management.git && cd store_management
 ```
 
 3. Install python and virtualenv, if not already installed:
