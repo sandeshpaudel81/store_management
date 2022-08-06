@@ -19,15 +19,15 @@ git clone https://github.com/sandeshpaudel81/store_management.git && cd store_ma
 ```shell
 pip install virtualenv
 ```
-Or
-```shell
-python -m venv myenv
-```
 
 4. Create virtual environment.
 
 ```shell
 virtualenv myenv
+```
+Or
+```shell
+python -m venv myenv
 ```
 
 5. Activate environment (in Windows):
